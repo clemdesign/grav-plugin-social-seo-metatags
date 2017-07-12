@@ -10,7 +10,7 @@ homepage: https://github.com/clemdesign/grav-plugin-social-seo-metatags
 demo:
 keywords: grav, plugin, facebook, open graph, twitter cards, google, seo, description, metatags, tags
 bugs: https://github.com/clemdesign/grav-plugin-social-seo-metatags/issues
-docs: https://github.com/clemdesign/grav-plugin-social-seo-metatags/blob/develop/README.md
+docs: https://github.com/clemdesign/grav-plugin-social-seo-metatags/blob/master/README.md
 license: MIT
 
 form:
