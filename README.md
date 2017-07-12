@@ -4,14 +4,14 @@ The **Social & SEO Meta-Tags** Plugin is for [Grav CMS](http://github.com/getgra
 
 ## Description
 
-Add and manage the SEO metatags:
+Add and manage the SEO meta-tags:
 - Description
 - Robots
 - Keywords
 
-Add all Meta Tags that need Facebook Open Graph, and Twitter Cards.
+Add all Meta-Tags that need Facebook Open Graph, and Twitter Cards.
 
-Note: `keyword` metatag is deprecaded for the most bots but this plugin allow management of it for the other bots.
+Note: `keyword` meta-tag is deprecaded for the most bots but this plugin allow management of it for the other bots.
 
 
 # Features
@@ -38,7 +38,7 @@ Plugin no need to edit any template :)
 
 After enabling plugin, for Social integration, no action to do !
 
-For SEO, you can define `robots` and `keywords` metatag content from header of markdown page. For this, add the following line:
+For SEO, you can define `robots` and `keywords` meta-tag content from header of markdown page. For this, add the following line:
 ```md
 ---
 robots: noindex, nofollow, ...
@@ -73,9 +73,9 @@ seo:
 
 `length` or "Number of keywords" allow you to define maximum number of keywords to display in meta-tag.
 
-`taxonomy.enabled` or "Use Taxonomy Keywords" allow you use Keywords of Taxonomy for Meta-Tags.
+`taxonomy.enabled` or "Use Taxonomy Keywords" allow you to use Keywords of Taxonomy for Meta-Tags.
 
-`page_content.enabled` or "Use Page Content Keywords" allow you use Keywords of page content (`<strong>` and `<em>`) for Meta-Tags.
+`page_content.enabled` or "Use Page Content Keywords" allow you to use Keywords of page content (`<strong>` and `<em>`) for Meta-Tags.
 
 ## Associate Twitter account
 
