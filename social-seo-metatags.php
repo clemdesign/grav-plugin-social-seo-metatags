@@ -74,6 +74,10 @@ class SocialSEOMetaTagsPlugin extends Plugin
       $desc_temp = substr($this->desc,0,157);
       $this->desc = substr($desc_temp, 0, strrpos($desc_temp, ' '))."...";
     }
+    if($this->desc == "")
+    {
+      $this->desc = $this->config->get('site.metadata.description');
+    }
 
     //Apply change
     $meta = $this->getSEOMetatags($meta);
@@ -248,8 +252,10 @@ class SocialSEOMetaTagsPlugin extends Plugin
 
     if($this->grav['config']->get('plugins.social-seo-metatags.social_pages.pages.facebook.enabled')){
 
-      //Manually convert locale ll by ll_LL
-      switch($this->grav["page"]->language())
+      //Manually convert locale ll by ll_LL from page or default language
+      $default_locale = $this->grav["page"]->language();
+      if($default_locale == null) $default_locale = $this->grav['config']->get('site.default_lang');
+      switch($default_locale)
       {
         case "fr":
           $locale = "fr_FR";
@@ -268,8 +274,11 @@ class SocialSEOMetaTagsPlugin extends Plugin
       $meta['og:type']['property']        = 'og:type';
       $meta['og:type']['content']         = 'article';
 
-      $meta['og:type']['property']        = 'og:locale';
-      $meta['og:type']['content']         = $locale;
+      if(isset($locale))
+      {
+        $meta['og:type']['property']        = 'og:locale';
+        $meta['og:type']['content']         = $locale;
+      }
 
       $meta['og:url']['property']         = 'og:url';
       $meta['og:url']['content']          = $this->grav['uri']->url(true);
