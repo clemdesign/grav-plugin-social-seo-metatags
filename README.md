@@ -119,3 +119,7 @@ Check source of the following link: [http://www.clemdesign.fr/blog/3-outils-pour
 
 If you think any implementation are just not the best, feel free to submit ideas and pull requests. All your comments and suggestion are welcome.
 
+# Credits
+
+Some features based on [Social Meta Tags Plugin](https://github.com/tucho235/grav-plugin-social-meta-tags)
+
