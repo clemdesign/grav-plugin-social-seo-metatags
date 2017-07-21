@@ -22,10 +22,19 @@ Note: `keyword` meta-tag is deprecaded for the most bots but this plugin allow m
 
 # Installation
 
-The command using **gpm** is not yet available.
+## Using GPM (preferred):
 
-Manually installation shall be done. In `user/plugins` folder, apply the following command:
-```
+The simplest way to install this plugin is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm) through your system's Terminal (also called the command line). From the root of your Grav install type:
+
+```shell
+$ bin/gpm install social-seo-metatags
+
+This will install the Social & SEO Meta-Tags plugin into your `/user/plugins` directory within Grav. Its files can be found under `/user/plugins/social-seo-metatags`.
+
+## Manual Installation:
+
+In `/user/plugins` folder, apply the following command:
+```shell
 git clone https://github.com/clemdesign/grav-plugin-social-seo-metatags social-seo-metatags
 ```
 
