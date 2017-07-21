@@ -28,6 +28,7 @@ The simplest way to install this plugin is via the [Grav Package Manager (GPM)](
 
 ```shell
 $ bin/gpm install social-seo-metatags
+```
 
 This will install the Social & SEO Meta-Tags plugin into your `/user/plugins` directory within Grav. Its files can be found under `/user/plugins/social-seo-metatags`.
 
