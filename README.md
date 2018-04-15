@@ -144,7 +144,7 @@ This behavior is discussed [here](https://github.com/getgrav/grav/issues/1955).
 
 # Demo
 
-Check source of the following link: [http://www.clemdesign.fr/blog/3-outils-pour-mettre-de-la-couleur-syntaxique-a-vos-articles](http://www.clemdesign.fr/blog/3-outils-pour-mettre-de-la-couleur-syntaxique-a-vos-articles)
+Check source of the following link: [http://www.clemdesign.fr/blog/grav-un-nouveau-plugin-pour-gerer-les-meta-tags](view-source:http://www.clemdesign.fr/blog/grav-un-nouveau-plugin-pour-gerer-les-meta-tags)
 
 # Contributing
 
