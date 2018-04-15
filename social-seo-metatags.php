@@ -276,8 +276,8 @@ class SocialSEOMetaTagsPlugin extends Plugin
 
       if(isset($locale))
       {
-        $meta['og:type']['property']        = 'og:locale';
-        $meta['og:type']['content']         = $locale;
+        $meta['og:locale']['property']        = 'og:locale';
+        $meta['og:locale']['content']         = $locale;
       }
 
       $meta['og:url']['property']         = 'og:url';
