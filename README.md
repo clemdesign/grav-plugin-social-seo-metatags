@@ -58,7 +58,6 @@ Page content
 ```
 
 
-
 # Configuration
 
 ## Common SEO
@@ -108,6 +107,20 @@ social_pages:
 
 ## Associate Facebook App Id
 
+### Namespace configuration
+
+Facebook uses [OpenGraph](http://ogp.me/) metatags that requires to use a namespace on `html` tag.
+
+In your base template, add the following line in the `html` tag:
+
+```twig
+<html {{
+  (config.plugins['social-seo-metatags'].enabled and config.plugins['social-seo-metatags'].social_pages.pages.facebook.enabled) ? 'xmlns:og="http://ogp.me/ns#"' : ''
+}}>
+```
+
+### Plugin configuration
+
 For Facebook, you have the following default configuration:
 ```
 social_pages:
@@ -120,6 +133,14 @@ social_pages:
 `enabled` or "Facebook active" enable integration of [Facebook Open Graph](https://developers.facebook.com/docs/opengraph/getting-started) meta-tags.
 
 You need to generate an app_id. Without this property you will lose admin right on the Open Graph Facebook Page.
+
+### Gzip activation
+
+It could be that content sharing on facebook require the _Gzip activation_. The [Facebook debugger](https://developers.facebook.com/tools/debug/sharing/) will display no data or incomprehensible errors in this case.
+
+To resolve it, set the `cache.gzip` to `true` in `system.yaml` configuration file.
+
+This behavior is discussed [here](https://github.com/getgrav/grav/issues/1955).
 
 # Demo
 
