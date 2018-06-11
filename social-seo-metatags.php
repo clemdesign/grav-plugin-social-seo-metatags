@@ -53,6 +53,7 @@ class SocialSEOMetaTagsPlugin extends Plugin
     if (    !$this->isAdmin()
         and $this->config->get('plugins.social-seo-metatags.enabled')
         ) {
+          // TODO: Check when metadata are set to define this priority: Metadata shall be set before executing this plugin - Works with default configuration => To do later.
           $this->enable([
               'onPageInitialized'     => ['onPageInitialized', 0]
           ]);
@@ -92,20 +93,19 @@ class SocialSEOMetaTagsPlugin extends Plugin
       $page         = $this->grav["page"];
       $page_header  = $page->header();
       $keywords     = "";
+
       /**
        *  SEO Description
        **/
-      $meta['description']['name']      = 'description';
-      $meta['description']['content']   = $this->desc;
+      if(!isset($page_header->metadata->description)) {
+        $meta['description']['name']      = 'description';
+        $meta['description']['content']   = $this->desc;
+      }
 
       /**
        *  SEO Keywords
        **/
-      if(isset($page_header->keywords))
-      {
-        $keywords = $page_header->keywords;
-      }
-      else
+      if(!isset($meta['keywords']))
       {
         $length = $this->config->get('plugins.social-seo-metatags.seo.keywords.length');
         if($length < 1) $length = 20;
@@ -146,23 +146,18 @@ class SocialSEOMetaTagsPlugin extends Plugin
           $keywords_tab = array_slice($keywords_tab, 0, $length);
           $keywords = join(',',$keywords_tab);
         }
-      }
-
-      if($keywords != "")
-      {
-        $meta['keywords']['name']      = 'keywords';
-        $meta['keywords']['content']   = strip_tags($keywords);
+  
+        if($keywords != "")
+        {
+          $meta['keywords']['name']      = 'keywords';
+          $meta['keywords']['content']   = strip_tags($keywords);
+        }
       }
 
       /**
        *  SEO Robots
        **/
-      if(isset($page_header->robots))
-      {
-        $meta['robots']['name']       = 'robots';
-        $meta['robots']['content']    = $page_header->robots;
-      }
-      else
+      if(!isset($meta['robots']))
       {
         switch ($this->config->get('plugins.social-seo-metatags.seo.robots'))
         {
@@ -265,25 +260,33 @@ class SocialSEOMetaTagsPlugin extends Plugin
           break;
       }
 
-      $meta['og:title']['property']       = 'og:title';
-      $meta['og:title']['content']        = $this->title;
+      if(!isset($meta['og:title'])){
+        $meta['og:title']['property']       = 'og:title';
+        $meta['og:title']['content']        = $this->title;
+      }
 
-      $meta['og:description']['property'] = 'og:description';
-      $meta['og:description']['content']  = $this->desc;
+      if(!isset($meta['og:description'])){
+        $meta['og:description']['property'] = 'og:description';
+        $meta['og:description']['content']  = $this->desc;
+      }
 
-      $meta['og:type']['property']        = 'og:type';
-      $meta['og:type']['content']         = 'article';
+      if(!isset($meta['og:type'])){
+        $meta['og:type']['property']        = 'og:type';
+        $meta['og:type']['content']         = 'article';
+      }
 
-      if(isset($locale))
+      if(isset($locale) && !isset($meta['og:locale']))
       {
         $meta['og:locale']['property']        = 'og:locale';
         $meta['og:locale']['content']         = $locale;
       }
 
-      $meta['og:url']['property']         = 'og:url';
-      $meta['og:url']['content']          = $this->grav['uri']->url(true);
+      if(!isset($meta['og:url'])){
+        $meta['og:url']['property']         = 'og:url';
+        $meta['og:url']['content']          = $this->grav['uri']->url(true);
+      }
 
-      if (!empty($this->grav['page']->value('media.image'))) {
+      if (!empty($this->grav['page']->value('media.image')) && !isset($meta['og:image'])) {
         $images = $this->grav['page']->media()->images();
         $image  = array_shift($images);
 
@@ -291,8 +294,10 @@ class SocialSEOMetaTagsPlugin extends Plugin
         $meta['og:image']['content']   = $this->grav['uri']->base() . $image->url();
       }
 
-      $meta['fb:app_id']['property']     = 'fb:app_id';
-      $meta['fb:app_id']['content']      = $this->grav['config']->get('plugins.social-seo-metatags.social_pages.pages.facebook.appid');
+      if(!isset($meta['fb:app_id'])){
+        $meta['fb:app_id']['property']     = 'fb:app_id';
+        $meta['fb:app_id']['content']      = $this->grav['config']->get('plugins.social-seo-metatags.social_pages.pages.facebook.appid');
+      }
 
     }
     return $meta;
