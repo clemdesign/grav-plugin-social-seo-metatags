@@ -11,7 +11,7 @@ Add and manage the SEO meta-tags:
 
 Add all Meta-Tags that need Facebook Open Graph, and Twitter Cards.
 
-Note: `keyword` meta-tag is deprecaded for the most bots but this plugin allow management of it for the other bots.
+Note: `keyword` meta-tag is deprecated for the most bots but this plugin allow management of it for the other bots.
 
 
 # Features
@@ -46,16 +46,23 @@ This will clone this repository into the _social-seo-metatags_ folder.
 
 Plugin no need to edit any template :)
 
-After enabling plugin, for Social integration, no action to do !
+After enabling plugin and options, no action to do !  
+Items are determined from your page (Description, Image...)
 
-For SEO, you can define `robots` and `keywords` meta-tag content from header of markdown page. For this, add the following line:
+You have possibility to customize meta-tag from your [page header metadata](https://learn.getgrav.org/content/headers#standard-metatag-examples):
+
 ```md
+
 ---
-robots: noindex, nofollow, ...
-keywords: key1, key2, key3, ...
+metadata:
+    description: 'Your page description'
+    robots: noindex, nofollow, ...
+    keywords: key1, key2, key3, ...
+    'og:title': 'The title for OpenGraph'
 ---
 Page content
 ```
+
 
 
 # Configuration
@@ -73,18 +80,18 @@ seo:
     enabled: false
 ```
 
-`robots` or "Default Robots Meta-Tag" allow you to define default rules for bots. You have the following possibilities:
+`robots` e.g. "Default Robots Meta-Tag" allow you to define default rules for bots. You have the following possibilities:
 - noindex: prevents the page from being indexed
 - nofollow: don't follow links from this page when looking for new pages to crawl
 - nosnippet: don't show a snippet of this page when displaying it in the search results
 - noodp: don't use text from ODP (The Open Directory Project a.k.a. dmoz.org) to generate a title or snippet for this page
 - noarchive: don't display a "Cached" link for this page in the search results
 
-`length` or "Number of keywords" allow you to define maximum number of keywords to display in meta-tag.
+`length` e.g. "Number of keywords" allow you to define maximum number of keywords to display in meta-tag.
 
-`taxonomy.enabled` or "Use Taxonomy Keywords" allow you to use Keywords of Taxonomy for Meta-Tags.
+`taxonomy.enabled` e.g. "Use Taxonomy Keywords" allow you to use Keywords of Taxonomy for Meta-Tags.
 
-`page_content.enabled` or "Use Page Content Keywords" allow you to use Keywords of page content (`<strong>` and `<em>`) for Meta-Tags.
+`page_content.enabled` e.g. "Use Page Content Keywords" allow you to use Keywords of page content (`<strong>` and `<em>`) for Meta-Tags.
 
 ## Associate Twitter account
 
@@ -99,11 +106,11 @@ social_pages:
       username: ''
 ```
 
-`enabled` or "Twitter Cards active" enable integration of [Twitter Cards](https://dev.twitter.com/cards/overview) meta-tags.
+`enabled` e.g. "Twitter Cards active" enable integration of [Twitter Cards](https://dev.twitter.com/cards/overview) meta-tags.
 
-`type` or "Card Type" define the typê of card used by meta-tag. Accepted values are: `summary`, `summary_large_image`.
+`type` e.g. "Card Type" define the typê of card used by meta-tag. Accepted values are: `summary`, `summary_large_image`.
 
-`username` or "Twitter Username" is your twitter account reachable by https://twitter/username.
+`username` e.g. "Twitter Username" is your twitter account reachable by https://twitter/username.
 
 ## Associate Facebook App Id
 
@@ -130,7 +137,7 @@ social_pages:
       appid: '1234567890'
 ```
 
-`enabled` or "Facebook active" enable integration of [Facebook Open Graph](https://developers.facebook.com/docs/opengraph/getting-started) meta-tags.
+`enabled` e.g. "Facebook active" enable integration of [Facebook Open Graph](https://developers.facebook.com/docs/opengraph/getting-started) meta-tags.
 
 You need to generate an app_id. Without this property you will lose admin right on the Open Graph Facebook Page.
 
