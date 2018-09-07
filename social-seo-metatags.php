@@ -146,7 +146,7 @@ class SocialSEOMetaTagsPlugin extends Plugin
           $keywords_tab = array_slice($keywords_tab, 0, $length);
           $keywords = join(',',$keywords_tab);
         }
-  
+
         if($keywords != "")
         {
           $meta['keywords']['name']      = 'keywords';
@@ -201,14 +201,17 @@ class SocialSEOMetaTagsPlugin extends Plugin
   // Searches in the page and in the children of that page (use case: modular pages).
   private function getFirstImage() {
       if (!empty($this->grav['page']->value('media.image'))) {
-          $images = $this->grav['page']->media()->images();
+        $images = $this->grav['page']->media()->images();
       } elseif (!empty($this->grav['page']->collection())) {
-          foreach ($this->grav['page']->collection() as $child) {
-              if (!empty($child->value('media.image'))) {
-                  $images = $child->media()->images();
-                  break;
-              }
+        foreach ($this->grav['page']->collection() as $child) {
+          if (!empty($child->value('media.image'))) {
+            $images = $child->media()->images();
+            break;
           }
+        }
+        if (!isset($image)) {
+          return null;
+        }
       } else {
           return null;
       }
