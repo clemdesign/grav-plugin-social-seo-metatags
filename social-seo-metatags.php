@@ -1,6 +1,7 @@
 <?php
 namespace Grav\Plugin;
 
+use Grav\Common\Page\Page;
 use Grav\Common\Plugin;
 use RocketTheme\Toolbox\Event\Event;
 
@@ -201,17 +202,23 @@ class SocialSEOMetaTagsPlugin extends Plugin
   // Searches in the page and in the children of that page (use case: modular pages).
   private function getFirstImage() {
       if (!empty($this->grav['page']->value('media.image'))) {
+
         $images = $this->grav['page']->media()->images();
+
       } elseif (!empty($this->grav['page']->collection())) {
+
         foreach ($this->grav['page']->collection() as $child) {
+          /* @var $child Page */
           if (!empty($child->value('media.image'))) {
             $images = $child->media()->images();
             break;
           }
         }
-        if (!isset($image)) {
+
+        if (!isset($images)) {
           return null;
         }
+
       } else {
           return null;
       }
@@ -306,10 +313,13 @@ class SocialSEOMetaTagsPlugin extends Plugin
         $meta['og:url']['content']          = $this->grav['uri']->url(true);
       }
 
-      $image = $this->getFirstImage();
-      if (isset($image) && !isset($meta['og:image'])) {
-        $meta['og:image']['property']  = 'og:image';
-        $meta['og:image']['content']   = $this->grav['uri']->base() . $image->url();
+      if(!isset($meta['og:image'])) {
+        $image = $this->getFirstImage();
+
+        if(isset($image)) {
+          $meta['og:image']['property']  = 'og:image';
+          $meta['og:image']['content']   = $this->grav['uri']->base() . $image->url();
+        }
       }
 
       if(!isset($meta['fb:app_id'])){
