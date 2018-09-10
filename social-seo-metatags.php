@@ -1,6 +1,7 @@
 <?php
 namespace Grav\Plugin;
 
+use Grav\Common\Page\Page;
 use Grav\Common\Plugin;
 use RocketTheme\Toolbox\Event\Event;
 
@@ -146,7 +147,7 @@ class SocialSEOMetaTagsPlugin extends Plugin
           $keywords_tab = array_slice($keywords_tab, 0, $length);
           $keywords = join(',',$keywords_tab);
         }
-  
+
         if($keywords != "")
         {
           $meta['keywords']['name']      = 'keywords';
@@ -198,6 +199,33 @@ class SocialSEOMetaTagsPlugin extends Plugin
     return $meta;
   }
 
+  // Searches in the page and in the children of that page (use case: modular pages).
+  private function getFirstImage() {
+      if (!empty($this->grav['page']->value('media.image'))) {
+
+        $images = $this->grav['page']->media()->images();
+
+      } elseif (!empty($this->grav['page']->collection())) {
+
+        foreach ($this->grav['page']->collection() as $child) {
+          /* @var $child Page */
+          if (!empty($child->value('media.image'))) {
+            $images = $child->media()->images();
+            break;
+          }
+        }
+
+        if (!isset($images)) {
+          return null;
+        }
+
+      } else {
+          return null;
+      }
+
+    return array_shift($images);
+  }
+
   private function getTwitterCardMetatags($meta){
 
     if($this->grav['config']->get('plugins.social-seo-metatags.social_pages.pages.twitter.enabled')) {
@@ -221,10 +249,9 @@ class SocialSEOMetaTagsPlugin extends Plugin
       }
 
       if (!isset($meta['twitter:image'])) {
-        if (!empty($this->grav['page']->value('media.image'))) {
-          $images = $this->grav['page']->media()->images();
-          $image  = array_shift($images);
+        $image = $this->getFirstImage();
 
+        if (isset($image)) {
           $meta['twitter:image']['name']     = 'twitter:image';
           $meta['twitter:image']['property'] = 'twitter:image';
           $meta['twitter:image']['content']  = $this->grav['uri']->base() . $image->url();
@@ -286,12 +313,13 @@ class SocialSEOMetaTagsPlugin extends Plugin
         $meta['og:url']['content']          = $this->grav['uri']->url(true);
       }
 
-      if (!empty($this->grav['page']->value('media.image')) && !isset($meta['og:image'])) {
-        $images = $this->grav['page']->media()->images();
-        $image  = array_shift($images);
+      if(!isset($meta['og:image'])) {
+        $image = $this->getFirstImage();
 
-        $meta['og:image']['property']  = 'og:image';
-        $meta['og:image']['content']   = $this->grav['uri']->base() . $image->url();
+        if(isset($image)) {
+          $meta['og:image']['property']  = 'og:image';
+          $meta['og:image']['content']   = $this->grav['uri']->base() . $image->url();
+        }
       }
 
       if(!isset($meta['fb:app_id'])){
