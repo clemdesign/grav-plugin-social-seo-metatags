@@ -1,3 +1,11 @@
+# v1.1.2
+## 12/04/2018
+
+1. [](#improved)
+    * Treat request of Issue [#4](https://github.com/clemdesign/grav-plugin-social-seo-metatags/issues/4)
+       > Add option "NoArchive, NoODP" for robots meta-tag
+
+
 # v1.1.1
 ## 09/10/2018
 
