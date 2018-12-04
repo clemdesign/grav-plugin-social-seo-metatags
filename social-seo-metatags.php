@@ -190,6 +190,10 @@ class SocialSEOMetaTagsPlugin extends Plugin
             $meta['robots']['name']       = 'robots';
             $meta['robots']['content']    = 'nosnippet';
             break;
+          case "noarchive_noodp":
+            $meta['robots']['name']       = 'robots';
+            $meta['robots']['content']    = 'noarchive, noodp';
+            break;
           default:
             // Without metatag
             break;

@@ -49,6 +49,7 @@ form:
                       nosnippet: 'NoSnippet'
                       noarchive: 'NoArchive'
                       noodp:  'NoODP'
+                      noarchive_noodp: 'NoArchive, NoODP'
                       without: PLUGINS.SOCIAL_SEO_METATAGS.GENERAL.ROBOTS.WITHOUT
                   seo.keywords.taxonomy.enabled:
                     type: toggle
