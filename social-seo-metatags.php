@@ -98,7 +98,7 @@ class SocialSEOMetaTagsPlugin extends Plugin
       /**
        *  SEO Description
        **/
-      if(!isset($page_header->metadata->description)) {
+      if(!isset($page_header->metadata['description'])) {
         $meta['description']['name']      = 'description';
         $meta['description']['content']   = $this->desc;
       }
