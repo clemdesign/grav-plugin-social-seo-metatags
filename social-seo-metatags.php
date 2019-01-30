@@ -51,16 +51,17 @@ class SocialSEOMetaTagsPlugin extends Plugin
   public function onPluginsInitialized()
   {
 
-    if (    !$this->isAdmin()
-        and $this->config->get('plugins.social-seo-metatags.enabled')
-        ) {
-          // TODO: Check when metadata are set to define this priority: Metadata shall be set before executing this plugin - Works with default configuration => To do later.
-          $this->enable([
-              'onPageInitialized'     => ['onPageInitialized', 0]
-          ]);
-        }
+    if (!$this->isAdmin() && $this->config->get('plugins.social-seo-metatags.enabled')) {
+      // TODO: Check when metadata are set to define this priority: Metadata shall be set before executing this plugin - Works with default configuration => To do later.
+      $this->enable([
+          'onPageInitialized'     => ['onPageInitialized', 0]
+      ]);
+    }
   }
 
+  /**
+   * Function called on Grav Page initilized
+   */
   public function onPageInitialized(Event $e)
   {
     $page = $this->grav['page'];
@@ -69,7 +70,7 @@ class SocialSEOMetaTagsPlugin extends Plugin
     $this->desc = $this->sanitizeMarkdowns(strip_tags($page->summary()));
     $this->title = $this->sanitizeMarkdowns($this->grav['page']->title());
 
-    //Pre-treament
+    //Pre-treatment
     if(strlen($this->desc)>160)
     {
       // Remove last (truncated) word and replace by ...
@@ -85,20 +86,28 @@ class SocialSEOMetaTagsPlugin extends Plugin
     $meta = $this->getSEOMetatags($meta);
     $meta = $this->getTwitterCardMetatags($meta);
     $meta = $this->getFacebookMetatags($meta);
+
+    //Set new meta to the page
     $page->metadata($meta);
   }
 
   private function getSEOMetatags($meta){
     if($this->config->get('plugins.social-seo-metatags.enabled'))
     {
+      /** @var $page Page */
       $page         = $this->grav["page"];
       $page_header  = $page->header();
       $keywords     = "";
 
       /**
-       *  SEO Description
+       * SEO Description
+       *
+       * Build process:
+       *   1. Define description from Summary.
+       *   2. If Summary not defined, define description from site metadata configuration.
+       *   3. If frontmatter header description defined, replace description by frontmatter.
        **/
-      if(!isset($page_header->metadata->description)) {
+      if(!isset($page_header->metadata['description'])) {
         $meta['description']['name']      = 'description';
         $meta['description']['content']   = $this->desc;
       }
