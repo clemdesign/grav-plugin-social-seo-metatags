@@ -64,13 +64,15 @@ class SocialSEOMetaTagsPlugin extends Plugin
    */
   public function onPageInitialized(Event $e)
   {
+    /** @var $page Page */
     $page = $this->grav['page'];
+
     //Get values
     $meta = $page->metadata(null);
     $this->desc = $this->sanitizeMarkdowns(strip_tags($page->summary()));
     $this->title = $this->sanitizeMarkdowns($this->grav['page']->title());
 
-    //Pre-treatment
+    //Pre-treatment fro description
     if(strlen($this->desc)>160)
     {
       // Remove last (truncated) word and replace by ...
@@ -80,6 +82,11 @@ class SocialSEOMetaTagsPlugin extends Plugin
     if($this->desc == "")
     {
       $this->desc = $this->config->get('site.metadata.description');
+    }
+
+    //Header description treatment
+    if(isset($page->header()->description)){
+      $this->desc = $page->header()->description;
     }
 
     //Apply change
@@ -105,7 +112,8 @@ class SocialSEOMetaTagsPlugin extends Plugin
        * Build process:
        *   1. Define description from Summary.
        *   2. If Summary not defined, define description from site metadata configuration.
-       *   3. If frontmatter header description defined, replace description by frontmatter.
+       *   3. If description from frontmatter header is defined, use it.
+       *   4. If description from frontmatter header metadata (for each metatag) is defined, use it.
        **/
       if(!isset($page_header->metadata['description'])) {
         $meta['description']['name']      = 'description';
