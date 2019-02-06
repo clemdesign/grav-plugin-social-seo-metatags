@@ -46,8 +46,9 @@ This will clone this repository into the _social-seo-metatags_ folder.
 
 Plugin no need to edit any template :)
 
-After enabling plugin and options, no action to do !  
-Items are determined from your page (Description, Image...)
+After enabling plugin and options, 2 solutions:
+  - Nothing to do: Items are determined from your page (Description, Keywords...)
+  - Overwrite meta-tags from your frontmatter header page configuration.
 
 You have possibility to customize meta-tag from your [page header metadata](https://learn.getgrav.org/content/headers#standard-metatag-examples):
 
@@ -59,10 +60,35 @@ metadata:
     robots: noindex, nofollow, ...
     keywords: key1, key2, key3, ...
     'og:title': 'The title for OpenGraph'
+    'twitter:description': 'The description for Twitter'
 ---
 Page content
 ```
 
+To define a global description for all meta-tags, configure your page header as follow:
+
+```md
+
+---
+description: 'Global description'
+metadata:
+    robots: noindex, nofollow, ...
+    keywords: key1, key2, key3, ...
+    'og:title': 'The title for OpenGraph'
+---
+Page content
+```
+
+> This configuration set up description for tag `description`, `og:description` and `twitter:description`.
+
+## Strategy for Description set-up
+
+Description is defined as follow:
+
+1. Define description from Summary.
+2. If Summary not defined, define description from site metadata configuration.
+3. If description from frontmatter header is defined, use it.
+4. If description from frontmatter header metadata (for each meta-tag) is defined, use it.
 
 
 # Configuration
