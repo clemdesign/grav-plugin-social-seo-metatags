@@ -1,3 +1,12 @@
+# v1.2.0
+## 02/06/2019
+
+1. [](#improved)
+    * Treat request of Issue [#7](https://github.com/clemdesign/grav-plugin-social-seo-metatags/issues/7)
+       > Improve set-up of description from frontmatter header page
+
+
+
 # v1.1.3
 ## 01/30/2019
 
