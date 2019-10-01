@@ -17,6 +17,7 @@ Note: `keyword` meta-tag is deprecated for the most bots but this plugin allow m
 # Features
 
 * [Open Graph](http://ogp.me/) support.
+* [Facebook Insights](https://developers.facebook.com/docs/sharing/referral-insights) support.
 * [Twitter Cards](https://dev.twitter.com/cards/overview) support. You can select between Summary and Large cards.
 
 
@@ -43,8 +44,6 @@ This will clone this repository into the _social-seo-metatags_ folder.
 
 
 # Usage
-
-Plugin no need to edit any template :)
 
 After enabling plugin and options, 2 solutions:
   - Nothing to do: Items are determined from your page (Description, Keywords...)
@@ -142,14 +141,21 @@ social_pages:
 
 ### Namespace configuration
 
-Facebook uses [OpenGraph](http://ogp.me/) metatags that requires to use a namespace on `html` tag.
+Facebook uses [OpenGraph](http://ogp.me/) metatags. That requires to use a namespace on `html` tag.
 
 In your base template, add the following line in the `html` tag:
 
 ```twig
-<html {{
-  (config.plugins['social-seo-metatags'].enabled and config.plugins['social-seo-metatags'].social_pages.pages.facebook.enabled) ? 'xmlns:og="http://ogp.me/ns#"' : ''
-}}>
+<html
+    {{- (
+            config.plugins['social-seo-metatags'].enabled
+            and
+            config.plugins['social-seo-metatags'].social_pages.pages.opengraph.enabled
+        )
+        ? 'xmlns:og="http://ogp.me/ns#"'
+        : ''
+    -}}
+>
 ```
 
 ### Plugin configuration
@@ -158,14 +164,16 @@ For Facebook, you have the following default configuration:
 ```
 social_pages:
   pages:
-    facebook:
+    opengraph:
+      enabled: true
+    insights:
       enabled: false
       appid: '1234567890'
 ```
 
-`enabled` e.g. "Facebook active" enable integration of [Facebook Open Graph](https://developers.facebook.com/docs/opengraph/getting-started) meta-tags.
+`opengraph.enabled` toggles the integration of [Facebook Open Graph](https://ogp.me/) meta-tags.
 
-You need to generate an app_id. Without this property you will lose admin right on the Open Graph Facebook Page.
+`insights.enabled` toggles the integration of [Facebook Insights](https://developers.facebook.com/docs/sharing/referral-insights) meta-tag, which needs an app_id to identify you as the owner of the document. You can find this app_id from the [Facebook App Dashboard](https://developers.facebook.com/apps/redirect/dashboard).
 
 ### Gzip activation
 

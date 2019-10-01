@@ -292,9 +292,11 @@ class SocialSEOMetaTagsPlugin extends Plugin
   }
 
   private function getFacebookMetatags($meta){
+    $opengraph_is_active = $this->grav['config']->get('plugins.social-seo-metatags.social_pages.pages.opengraph.enabled');
 
-    if($this->grav['config']->get('plugins.social-seo-metatags.social_pages.pages.facebook.enabled')){
+    $insights_is_active = $this->grav['config']->get('plugins.social-seo-metatags.social_pages.pages.insights.enabled');
 
+    if($opengraph_is_active){
       //Manually convert locale ll by ll_LL from page or default language
       $default_locale = $this->grav["page"]->language();
       if($default_locale == null) $default_locale = $this->grav['config']->get('site.default_lang');
@@ -343,12 +345,14 @@ class SocialSEOMetaTagsPlugin extends Plugin
         }
       }
 
-      if(!isset($meta['fb:app_id'])){
-        $meta['fb:app_id']['property']     = 'fb:app_id';
-        $meta['fb:app_id']['content']      = $this->grav['config']->get('plugins.social-seo-metatags.social_pages.pages.facebook.appid');
+      if ($insights_is_active) {
+          if(!isset($meta['fb:app_id'])){
+            $meta['fb:app_id']['property'] = 'fb:app_id';
+            $meta['fb:app_id']['content']  = $this->grav['config']->get('plugins.social-seo-metatags.social_pages.pages.insights.appid');
+          }
       }
-
     }
+
     return $meta;
   }
 
