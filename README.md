@@ -137,11 +137,13 @@ social_pages:
 
 `username` e.g. "Twitter Username" is your twitter account reachable by https://twitter/username.
 
-## Associate Facebook App Id
+## Associate Open Graph and Facebook
+
+Open Graph can work without a strong integration to Facebook. This plugin gives you the opportunity to use both and add an app_id to use Facebook Statistics with your website.
 
 ### Namespace configuration
 
-Facebook uses [OpenGraph](http://ogp.me/) metatags. That requires to use a namespace on `html` tag.
+[OpenGraph](http://ogp.me/) requires to use a namespace on the `<html>` tag.
 
 In your base template, add the following line in the `html` tag:
 
