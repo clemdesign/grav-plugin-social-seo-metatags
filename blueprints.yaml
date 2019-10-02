@@ -114,11 +114,11 @@ form:
                     placeholder: '@'
               facebook:
                 type: tab
-                title: PLUGINS.SOCIAL_SEO_METATAGS.OPENGRAPH.NAME
+                title: PLUGINS.SOCIAL_SEO_METATAGS.FACEBOOK.NAME
                 fields:
-                  social_pages.pages.opengraph.enabled:
+                  social_pages.pages.facebook.opengraph.enabled:
                     type: toggle
-                    label: PLUGINS.SOCIAL_SEO_METATAGS.OPENGRAPH.ENABLED
+                    label: PLUGINS.SOCIAL_SEO_METATAGS.FACEBOOK.OPENGRAPH.ENABLED
                     highlight: 1
                     default: 0
                     options:
@@ -126,9 +126,9 @@ form:
                       0: PLUGINS.SOCIAL_SEO_METATAGS.NO
                     validate:
                       type: bool
-                  social_pages.pages.insights.enabled:
+                  social_pages.pages.facebook.insights.enabled:
                     type: toggle
-                    label: PLUGINS.SOCIAL_SEO_METATAGS.INSIGHTS.ENABLED
+                    label: PLUGINS.SOCIAL_SEO_METATAGS.FACEBOOK.INSIGHTS.ENABLED
                     highlight: 1
                     default: 0
                     options:
@@ -136,8 +136,8 @@ form:
                       0: PLUGINS.SOCIAL_SEO_METATAGS.NO
                     validate:
                       type: bool
-                  social_pages.pages.insights.appid:
+                  social_pages.pages.facebook.insights.appid:
                     type: text
-                    label: PLUGINS.SOCIAL_SEO_METATAGS.INSIGHTS.APPID
-                    help: PLUGINS.SOCIAL_SEO_METATAGS.INSIGHTS.APPID_HELP
+                    label: PLUGINS.SOCIAL_SEO_METATAGS.FACEBOOK.INSIGHTS.APPID
+                    help: PLUGINS.SOCIAL_SEO_METATAGS.FACEBOOK.INSIGHTS.APPID_HELP
                     size: medium

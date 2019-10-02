@@ -292,9 +292,9 @@ class SocialSEOMetaTagsPlugin extends Plugin
   }
 
   private function getFacebookMetatags($meta){
-    $opengraph_is_active = $this->grav['config']->get('plugins.social-seo-metatags.social_pages.pages.opengraph.enabled');
+    $opengraph_is_active = $this->grav['config']->get('plugins.social-seo-metatags.social_pages.pages.facebook.opengraph.enabled');
 
-    $insights_is_active = $this->grav['config']->get('plugins.social-seo-metatags.social_pages.pages.insights.enabled');
+    $insights_is_active = $this->grav['config']->get('plugins.social-seo-metatags.social_pages.pages.facebook.insights.enabled');
 
     if($opengraph_is_active){
       //Manually convert locale ll by ll_LL from page or default language
@@ -348,7 +348,7 @@ class SocialSEOMetaTagsPlugin extends Plugin
       if ($insights_is_active) {
           if(!isset($meta['fb:app_id'])){
             $meta['fb:app_id']['property'] = 'fb:app_id';
-            $meta['fb:app_id']['content']  = $this->grav['config']->get('plugins.social-seo-metatags.social_pages.pages.insights.appid');
+            $meta['fb:app_id']['content']  = $this->grav['config']->get('plugins.social-seo-metatags.social_pages.pages.facebook.insights.appid');
           }
       }
     }
