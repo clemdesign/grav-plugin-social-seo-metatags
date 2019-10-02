@@ -152,7 +152,7 @@ In your base template, add the following line in the `html` tag:
     {{- (
             config.plugins['social-seo-metatags'].enabled
             and
-            config.plugins['social-seo-metatags'].social_pages.pages.opengraph.enabled
+            config.plugins['social-seo-metatags'].social_pages.pages.facebook.opengraph.enabled
         )
         ? 'xmlns:og="http://ogp.me/ns#"'
         : ''
@@ -166,16 +166,17 @@ For Facebook, you have the following default configuration:
 ```
 social_pages:
   pages:
-    opengraph:
-      enabled: true
-    insights:
-      enabled: false
-      appid: '1234567890'
+    facebook:
+      opengraph:
+        enabled: true
+      insights:
+        enabled: false
+        appid: '1234567890'
 ```
 
-`opengraph.enabled` toggles the integration of [Facebook Open Graph](https://ogp.me/) meta-tags.
+`facebook.opengraph.enabled` toggles the integration of [Facebook Open Graph](https://ogp.me/) meta-tags.
 
-`insights.enabled` toggles the integration of [Facebook Insights](https://developers.facebook.com/docs/sharing/referral-insights) meta-tag, which needs an app_id to identify you as the owner of the document. You can find this app_id from the [Facebook App Dashboard](https://developers.facebook.com/apps/redirect/dashboard).
+`facebook.insights.enabled` toggles the integration of [Facebook Insights](https://developers.facebook.com/docs/sharing/referral-insights) meta-tag, which needs an app_id to identify you as the owner of the document. You can find this app_id from the [Facebook App Dashboard](https://developers.facebook.com/apps/redirect/dashboard).
 
 ### Gzip activation
 
