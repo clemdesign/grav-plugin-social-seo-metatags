@@ -13,5 +13,8 @@ social_pages:
       type: summary
       username: ''
     facebook:
-      enabled: false
-      appid: '1234567890'
+      opengraph:
+        enabled: true
+      insights:
+        enabled: false
+        appid: '1234567890'

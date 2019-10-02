@@ -41,11 +41,13 @@ en:
         USERNAME_HELP: 'If you not use AboutMe plugin, please define your twitter username (@username)'
 
       FACEBOOK:
-        NAME: 'Facebook Open Graph'
-        ENABLED: 'Facebook Open Graph active'
-        HELP: 'Share on Facebook'
-        APPID: 'App ID'
-        APPID_HELP: 'The App ID you get from the Facebook Developers page (https://developers.facebook.com/apps).'
+        NAME: 'Facebook'
+        OPENGRAPH:
+          ENABLED: 'Facebook Open Graph'
+        INSIGHTS:
+          ENABLED: 'Facebook Insights'
+          APPID: 'App ID'
+          APPID_HELP: 'The App ID you get from the Facebook Developers page (https://developers.facebook.com/apps). Need Facebook Insights enabled.'
 
 # French
 fr:
@@ -87,11 +89,13 @@ fr:
           SUMMARY: 'Carte de résumé'
         ABOUTME: 'Utiliser le plugin AboutMe'
         USERNAME: 'Nom d''utilisateur'
-        USERNAME_HELP: 'Si le plugin AboutMe n''est pas utilisé, veuillez définir le nom d''utilisateur Twitter SVP'
+        USERNAME_HELP: 'Si le plugin AboutMe n’est pas utilisé, veuillez définir le nom d’utilisateur Twitter SVP'
 
       FACEBOOK:
-        NAME: 'Facebook Open Graph'
-        ENABLED: 'Facebook Open Graph activé'
-        HELP: 'Partager sur Facebook'
-        APPID: 'ID d’application'
-        APPID_HELP: 'L’ID d’application pour se connecter à la page Développeurs Facebook (https://developers.facebook.com/apps).'
+        NAME: 'Facebook'
+        OPENGRAPH:
+          ENABLED: 'Facebook Open Graph'
+        INSIGHTS:
+          ENABLED: 'Facebook Insights'
+          APPID: 'ID d’application'
+          APPID_HELP: 'L’ID d’application pour se connecter à la page Développeurs Facebook (https://developers.facebook.com/apps). Nécessite Facebook Insights activé.'

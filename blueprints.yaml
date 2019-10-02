@@ -116,9 +116,9 @@ form:
                 type: tab
                 title: PLUGINS.SOCIAL_SEO_METATAGS.FACEBOOK.NAME
                 fields:
-                  social_pages.pages.facebook.enabled:
+                  social_pages.pages.facebook.opengraph.enabled:
                     type: toggle
-                    label: PLUGINS.SOCIAL_SEO_METATAGS.FACEBOOK.ENABLED
+                    label: PLUGINS.SOCIAL_SEO_METATAGS.FACEBOOK.OPENGRAPH.ENABLED
                     highlight: 1
                     default: 0
                     options:
@@ -126,8 +126,18 @@ form:
                       0: PLUGINS.SOCIAL_SEO_METATAGS.NO
                     validate:
                       type: bool
-                  social_pages.pages.facebook.appid:
+                  social_pages.pages.facebook.insights.enabled:
+                    type: toggle
+                    label: PLUGINS.SOCIAL_SEO_METATAGS.FACEBOOK.INSIGHTS.ENABLED
+                    highlight: 1
+                    default: 0
+                    options:
+                      1: PLUGINS.SOCIAL_SEO_METATAGS.YES
+                      0: PLUGINS.SOCIAL_SEO_METATAGS.NO
+                    validate:
+                      type: bool
+                  social_pages.pages.facebook.insights.appid:
                     type: text
-                    label: PLUGINS.SOCIAL_SEO_METATAGS.FACEBOOK.APPID
-                    help: PLUGINS.SOCIAL_SEO_METATAGS.FACEBOOK.APPID_HELP
+                    label: PLUGINS.SOCIAL_SEO_METATAGS.FACEBOOK.INSIGHTS.APPID
+                    help: PLUGINS.SOCIAL_SEO_METATAGS.FACEBOOK.INSIGHTS.APPID_HELP
                     size: medium
