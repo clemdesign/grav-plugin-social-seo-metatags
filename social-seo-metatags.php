@@ -25,6 +25,7 @@ class SocialSEOMetaTagsPlugin extends Plugin
    */
   private     $desc;
   private     $title;
+  private     $html_flags;
 
   /**
    * @return array
@@ -66,6 +67,12 @@ class SocialSEOMetaTagsPlugin extends Plugin
   {
     /** @var $page Page */
     $page = $this->grav['page'];
+
+    if($this->config->get('plugins.social-seo-metatags.quote.convert_simple')){
+      $this->html_flags = ENT_QUOTES;
+    } else {
+      $this->html_flags = ENT_COMPAT;
+    }
 
     //Get values
     $meta = $page->metadata(null);
@@ -384,7 +391,7 @@ class SocialSEOMetaTagsPlugin extends Plugin
 
     $text = trim($text);
 
-    return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+    return htmlspecialchars($text, $this->html_flags, 'UTF-8');
   }
 
   private function cleanKeywords($array)

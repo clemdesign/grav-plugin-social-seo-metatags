@@ -186,6 +186,17 @@ To resolve it, set the `cache.gzip` to `true` in `system.yaml` configuration fil
 
 This behavior is discussed [here](https://github.com/getgrav/grav/issues/1955).
 
+## Other configuration
+
+The plugin allow managing simple quote convertion in html entity. It can be an issue for Twitter sharing.
+
+There is the configuration
+
+```
+quote:
+  convert_simple: true 
+```
+
 # Demo
 
 Check source of the following link: [http://www.clemdesign.fr/blog/grav-un-nouveau-plugin-pour-gerer-les-meta-tags](view-source:http://www.clemdesign.fr/blog/grav-un-nouveau-plugin-pour-gerer-les-meta-tags)

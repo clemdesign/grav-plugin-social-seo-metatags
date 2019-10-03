@@ -26,6 +26,10 @@ en:
           LENGTH:
             NAME: 'Number of keywords'
             HELP: 'Maximum number of keywords to display in meta-tag'
+        QUOTE:
+          SIMPLE_RAW:
+            NAME: 'Convert simple quote to html entity (using code #000;)'
+            HELP: 'For Twitter sharing, raw simple quote may be necessary.'
 
       TWITTER:
         NAME: 'Twitter Cards'
@@ -78,6 +82,10 @@ fr:
           LENGTH:
             NAME: 'Nombre de mots-clés'
             HELP: 'Nombre de mots-clés maximal à afficher dans la meta-tag'
+        QUOTE:
+          SIMPLE_RAW:
+            NAME: 'Convertir les guillemets simples en entité HTML (utilisant code #000;)'
+            HELP: 'Pour les partages Twitter, utiliser les guillemets simple brut est nécessaire.'
 
       TWITTER:
         NAME: 'Cartes Twitter'

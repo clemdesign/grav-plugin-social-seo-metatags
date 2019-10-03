@@ -6,6 +6,8 @@ seo:
     enabled: true
   page_content:
     enabled: false
+quote:
+  convert_simple: true
 social_pages:
   pages:
     twitter:

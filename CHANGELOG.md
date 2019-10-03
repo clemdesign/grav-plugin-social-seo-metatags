@@ -8,6 +8,8 @@
 2. [](#bugfix)
     * Fix issue [#8](https://github.com/clemdesign/grav-plugin-social-seo-metatags/issues/8)
        > Add regex to validate twitter username
+    * Fix issue [#9](https://github.com/clemdesign/grav-plugin-social-seo-metatags/issues/9)
+       > Add option to enable convertion of simple quote to html entity.
 
 
 # v1.2.0
