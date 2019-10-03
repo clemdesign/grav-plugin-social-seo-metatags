@@ -188,7 +188,7 @@ This behavior is discussed [here](https://github.com/getgrav/grav/issues/1955).
 
 ## Other configuration
 
-The plugin allow managing simple quote convertion in html entity. It can be an issue for Twitter sharing.
+The plugin allow control on simple quote convertion in html entity. It can be an issue for Twitter sharing.
 
 There is the configuration
 
