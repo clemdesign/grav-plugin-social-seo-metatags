@@ -1,8 +1,13 @@
 # v2.0.0
-## 01/10/2019
+## 10/03/2019
 
 1. [](#new)
-    * Allow the use of Open Graph without Facebook Insights.
+    * Merge pull request [#14](https://github.com/clemdesign/grav-plugin-social-seo-metatags/pull/14)
+       > Allow the use of Open Graph without Facebook Insights.
+
+2. [](#bugfix)
+    * Fix issue [#8](https://github.com/clemdesign/grav-plugin-social-seo-metatags/issues/8)
+       > Add regex to validate twitter username
 
 
 # v1.2.0

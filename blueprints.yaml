@@ -112,6 +112,9 @@ form:
                     help: PLUGINS.SOCIAL_SEO_METATAGS.TWITTER.USERNAME_HELP
                     size: small
                     placeholder: '@'
+                    validate:
+                        pattern: '^@?(\w){1,15}$'
+                        message: PLUGINS.SOCIAL_SEO_METATAGS.TWITTER.USERNAME_VALIDATION
               facebook:
                 type: tab
                 title: PLUGINS.SOCIAL_SEO_METATAGS.FACEBOOK.NAME
