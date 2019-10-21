@@ -1,3 +1,11 @@
+
+# v2.0.1
+## 10/21/2019
+
+1. [](#bugfix)
+    * Fix issue for `og:url` when different slug is defined for a page.
+
+
 # v2.0.0
 ## 10/03/2019
 

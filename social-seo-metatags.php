@@ -340,7 +340,7 @@ class SocialSEOMetaTagsPlugin extends Plugin
 
       if(!isset($meta['og:url'])){
         $meta['og:url']['property']         = 'og:url';
-        $meta['og:url']['content']          = $this->grav['uri']->url(true);
+        $meta['og:url']['content']          = $this->grav['uri']->base() . $this->grav['uri']->uri();
       }
 
       if(!isset($meta['og:image'])) {
