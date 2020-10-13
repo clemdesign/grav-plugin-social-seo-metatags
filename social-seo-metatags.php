@@ -376,8 +376,8 @@ class SocialSEOMetaTagsPlugin extends Plugin
         '/\:\"(.*?)\"\:/'                        => '\1',  // quote
         '/```(.*)\n((.*|\n)+)\n```/'             => '\2',  // fence code
         '/`(.*?)`/'                              => '\1',  // inline code
-        '/(\*|\+|-)(.*)/'                        => '\2',  // ul lists
-        '/\n[0-9]+\.(.*)/'                       => '\2',  // ol lists
+        '/\n\s*(\*|\+|-)(.*)/'                   => '\2',  // ul lists
+        '/\n\s*[0-9]+\.(.*)/'                    => '\2',  // ol lists
         '/(&gt;|\>)+(.*)/'                       => '\2',  // blockquotes
     );
 
