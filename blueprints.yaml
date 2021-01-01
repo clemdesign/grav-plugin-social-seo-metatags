@@ -1,5 +1,5 @@
 name: Social & SEO Meta Tags
-version: 2.0.1
+version: 2.0.2
 description: Meta-tags for SEO and Social integration (Facebook Open Graph and Twitter Cards)
 icon: code
 author:
@@ -94,6 +94,20 @@ form:
                       0: PLUGINS.SOCIAL_SEO_METATAGS.NO
                     validate:
                       type: bool
+                  # @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image
+                  default.image:
+                    type: file
+                    label: PLUGINS.SOCIAL_SEO_METATAGS.GENERAL.DEFAULT.IMAGE.LABEL
+                    help: PLUGINS.SOCIAL_SEO_METATAGS.GENERAL.DEFAULT.IMAGE.HELP
+                    destination: 'user/assets/images'
+                    multiple: false
+                    filesize: 5
+                    random_name: true
+                    accept:
+                      - image/gif
+                      - image/jpeg
+                      - image/png
+                      - image/webp
               twitter:
                 type: tab
                 title: PLUGINS.SOCIAL_SEO_METATAGS.TWITTER.NAME

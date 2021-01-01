@@ -30,6 +30,10 @@ en:
           SIMPLE_RAW:
             NAME: 'Convert simple quote to html entity (using code #039;)'
             HELP: 'For Twitter sharing, raw simple quote may be necessary.'
+        DEFAULT:
+          IMAGE:
+            LABEL: 'Default image'
+            HELP: 'This image will be used if no other image is available in the Page.'
 
       TWITTER:
         NAME: 'Twitter Cards'
@@ -86,6 +90,10 @@ fr:
           SIMPLE_RAW:
             NAME: 'Convertir les guillemets simples en entité HTML (utilisant code #039;)'
             HELP: 'Pour les partages Twitter, utiliser les guillemets simple brut est nécessaire.'
+        DEFAULT:
+          IMAGE:
+            LABEL: 'Image par défaut'
+            HELP: 'Cette image sera utilisée si aucune autre image n’existe dans la Page.'
 
       TWITTER:
         NAME: 'Cartes Twitter'

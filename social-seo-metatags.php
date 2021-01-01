@@ -2,9 +2,9 @@
 namespace Grav\Plugin;
 
 use Grav\Common\Page\Page;
+use Grav\Common\Page\Medium\MediumFactory;
 use Grav\Common\Plugin;
 use RocketTheme\Toolbox\Event\Event;
-
 
 /**
  * Class SocialSEOMetaTagsPlugin
@@ -227,31 +227,60 @@ class SocialSEOMetaTagsPlugin extends Plugin
     return $meta;
   }
 
-  // Searches in the page and in the children of that page (use case: modular pages).
-  private function getFirstImage() {
-      if (!empty($this->grav['page']->value('media.image'))) {
+  /**
+   * Get the first available image in the Page or its children.
+   *
+   * @return ImageMedium|null Image Medium if it exists
+   */
+  private function getFirstImage(): ?\Grav\Common\Page\Medium\ImageMedium
+  {
+    $page = $this->grav['page'];
 
-        $images = $this->grav['page']->media()->images();
+    if (!empty($page->value('media.image'))) {
+      // Get images for the current page.
 
-      } elseif (!empty($this->grav['page']->collection())) {
+      $images = $page->media()->images();
 
-        foreach ($this->grav['page']->collection() as $child) {
-          /* @var $child Page */
-          if (!empty($child->value('media.image'))) {
-            $images = $child->media()->images();
-            break;
-          }
+    } elseif (!empty($page->collection())) {
+      // Get images for the children of the current pages.
+
+      foreach ($page->collection() as $child) {
+        /* @var $child Page */
+        if (!empty($child->value('media.image'))) {
+          $images = $child->media()->images();
+          break;
         }
-
-        if (!isset($images)) {
-          return null;
-        }
-
-      } else {
-          return null;
       }
 
-    return array_shift($images);
+    }
+
+    return isset($images)
+      ? array_shift($images)
+      : null;
+  }
+
+  /**
+   * Get the default image set in the Plugin config.
+   *
+   * @return ImageMedium|null Image Medium if it exists
+   */
+  private function getDefaultImage(): ?\Grav\Common\Page\Medium\ImageMedium
+  {
+    $default = $this
+      ->grav['config']
+      ->get('plugins.social-seo-metatags.default.image');
+
+    if (is_array($default)) {
+      $path = array_key_first($default);
+    }
+
+    if ($path && is_file($path)) {
+      $image = MediumFactory::fromFile($path);
+    }
+
+    return isset($image)
+      ? $image
+      : null;
   }
 
   private function getTwitterCardMetatags($meta){
@@ -277,7 +306,7 @@ class SocialSEOMetaTagsPlugin extends Plugin
       }
 
       if (!isset($meta['twitter:image'])) {
-        $image = $this->getFirstImage();
+        $image = $this->getFirstImage() ?: $this->getDefaultImage();
 
         if (isset($image)) {
           $meta['twitter:image']['name']     = 'twitter:image';
@@ -344,7 +373,7 @@ class SocialSEOMetaTagsPlugin extends Plugin
       }
 
       if(!isset($meta['og:image'])) {
-        $image = $this->getFirstImage();
+        $image = $this->getFirstImage() ?: $this->getDefaultImage();
 
         if(isset($image)) {
           $meta['og:image']['property']  = 'og:image';
@@ -376,7 +405,7 @@ class SocialSEOMetaTagsPlugin extends Plugin
         '/\:\"(.*?)\"\:/'                        => '\1',  // quote
         '/```(.*)\n((.*|\n)+)\n```/'             => '\2',  // fence code
         '/`(.*?)`/'                              => '\1',  // inline code
-        '/\n(\*|\+|-)(.*)/'                        => '\2',  // ul lists
+        '/(\*|\+|-)(.*)/'                        => '\2',  // ul lists
         '/\n[0-9]+\.(.*)/'                       => '\2',  // ol lists
         '/(&gt;|\>)+(.*)/'                       => '\2',  // blockquotes
     );
