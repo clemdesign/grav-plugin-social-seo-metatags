@@ -1,9 +1,10 @@
 <?php
 namespace Grav\Plugin;
 
-use Grav\Common\Page\Page;
 use Grav\Common\Page\Medium\MediumFactory;
+use Grav\Common\Page\Page;
 use Grav\Common\Plugin;
+use Grav\Common\Utils;
 use RocketTheme\Toolbox\Event\Event;
 
 /**
@@ -311,7 +312,11 @@ class SocialSEOMetaTagsPlugin extends Plugin
         if (isset($image)) {
           $meta['twitter:image']['name']     = 'twitter:image';
           $meta['twitter:image']['property'] = 'twitter:image';
-          $meta['twitter:image']['content']  = $this->grav['uri']->base() . $image->url();
+          $meta['twitter:image']['content']  = str_replace(
+            ' ',
+            '%20',
+            Utils::url($image->url(), true)
+          );
         }
       }
 
@@ -376,8 +381,12 @@ class SocialSEOMetaTagsPlugin extends Plugin
         $image = $this->getFirstImage() ?: $this->getDefaultImage();
 
         if(isset($image)) {
-          $meta['og:image']['property']  = 'og:image';
-          $meta['og:image']['content']   = $this->grav['uri']->base() . $image->url();
+          $meta['og:image']['property'] = 'og:image';
+          $meta['og:image']['content']  = str_replace(
+            ' ',
+            '%20',
+            Utils::url($image->url(), true)
+          );
         }
       }
 
