@@ -1,7 +1,9 @@
 <?php
 namespace Grav\Plugin;
 
+use Grav\Common\Media\Interfaces\MediaObjectInterface;
 use Grav\Common\Page\Medium\MediumFactory;
+use Grav\Common\Page\Medium\ImageMedium;
 use Grav\Common\Page\Page;
 use Grav\Common\Plugin;
 use Grav\Common\Utils;
@@ -231,15 +233,15 @@ class SocialSEOMetaTagsPlugin extends Plugin
   /**
    * Get the first available image in the Page or its children.
    *
-   * @return ImageMedium|null Image Medium if it exists
+   * @return ImageMedium|MediaObjectInterface|null Image Medium if it exists
    */
-  private function getFirstImage(): ?\Grav\Common\Page\Medium\ImageMedium
+  private function getFirstImage(): ?ImageMedium
   {
     $page = $this->grav['page'];
+    /* @var $page Page */
 
     if (!empty($page->value('media.image'))) {
       // Get images for the current page.
-
       $images = $page->media()->images();
 
     } elseif (!empty($page->collection())) {
@@ -252,8 +254,9 @@ class SocialSEOMetaTagsPlugin extends Plugin
           break;
         }
       }
-
     }
+
+    /* @var $images ImageMedium[] */
 
     return isset($images)
       ? array_shift($images)
@@ -265,7 +268,7 @@ class SocialSEOMetaTagsPlugin extends Plugin
    *
    * @return ImageMedium|null Image Medium if it exists
    */
-  private function getDefaultImage(): ?\Grav\Common\Page\Medium\ImageMedium
+  private function getDefaultImage(): ?ImageMedium
   {
     $default = $this
       ->grav['config']
