@@ -1,4 +1,11 @@
 
+# v2.1.0
+## 01/01/2020
+
+1. [](#new)
+    * Add support for a default image.
+
+
 # v2.0.1
 ## 10/21/2019
 

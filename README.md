@@ -188,13 +188,29 @@ This behavior is discussed [here](https://github.com/getgrav/grav/issues/1955).
 
 ## Other configuration
 
-The plugin allow control on simple quote convertion in html entity. It can be an issue for Twitter sharing.
+### Single quote escaping
 
-There is the configuration
+With the following configuration, the plugin allows the conversion of simple quote (`'`), which can be an issue for Twitter sharing, into html entity (`#039;`):
 
-```
+```yml
 quote:
-  convert_simple: true 
+  convert_simple: true
+```
+
+### Default image
+
+The following defines a default image to use if no image is present in the current Page.
+
+This avoids having to set an image for each Page; useful with repetitive Pages like events or such.
+
+```yml
+default:
+  image:
+    user/assets/images/ZOqdm0x1rzP6iLp.png:
+      name: ZOqdm0x1rzP6iLp.png
+      type: image/png
+      size: 27269
+      path: user/assets/images/ZOqdm0x1rzP6iLp.png
 ```
 
 # Demo
