@@ -1,4 +1,11 @@
 
+# v2.1.1
+## 03/15/2021
+
+1. [](#bugfix)
+    * Fix issue https://github.com/clemdesign/grav-plugin-social-seo-metatags/issues/19
+
+
 # v2.1.0
 ## 01/01/2020
 

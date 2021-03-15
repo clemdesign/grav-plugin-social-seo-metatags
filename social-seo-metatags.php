@@ -278,7 +278,7 @@ class SocialSEOMetaTagsPlugin extends Plugin
       $path = array_key_first($default);
     }
 
-    if ($path && is_file($path)) {
+    if (isset($path) && is_file($path)) {
       $image = MediumFactory::fromFile($path);
     }
 
