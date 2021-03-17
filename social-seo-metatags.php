@@ -233,12 +233,17 @@ class SocialSEOMetaTagsPlugin extends Plugin
   /**
    * Get the first available image in the Page or its children.
    *
-   * @return ImageMedium|MediaObjectInterface|null Image Medium if it exists
+   * @return string|null path of default image if it exists
    */
-  private function getFirstImage(): ?ImageMedium
+  private function getFirstImage(): ?string
   {
     $page = $this->grav['page'];
     /* @var $page Page */
+
+    // Return the frontmatter header_image_file if defined
+    if (isset($page->header()->header_image_file)) {
+      return $page->header()->header_image_file;
+    }
 
     if (!empty($page->value('media.image'))) {
       // Get images for the current page.
@@ -257,18 +262,19 @@ class SocialSEOMetaTagsPlugin extends Plugin
     }
 
     /* @var $images ImageMedium[] */
+    $image = isset($images) ? array_shift($images) : null;
 
-    return isset($images)
-      ? array_shift($images)
+    return $image
+      ? Utils::url($image->url(), true)
       : null;
   }
 
   /**
    * Get the default image set in the Plugin config.
    *
-   * @return ImageMedium|null Image Medium if it exists
+   * @return string|null path of default image if it exists
    */
-  private function getDefaultImage(): ?ImageMedium
+  private function getDefaultImage(): ?string
   {
     $default = $this
       ->grav['config']
@@ -283,7 +289,7 @@ class SocialSEOMetaTagsPlugin extends Plugin
     }
 
     return isset($image)
-      ? $image
+      ? Utils::url($image->url(), true)
       : null;
   }
 
@@ -310,15 +316,15 @@ class SocialSEOMetaTagsPlugin extends Plugin
       }
 
       if (!isset($meta['twitter:image'])) {
-        $image = $this->getFirstImage() ?: $this->getDefaultImage();
+        $imagePath = $this->getFirstImage() ?: $this->getDefaultImage();
 
-        if (isset($image)) {
+        if (isset($imagePath)) {
           $meta['twitter:image']['name']     = 'twitter:image';
           $meta['twitter:image']['property'] = 'twitter:image';
           $meta['twitter:image']['content']  = str_replace(
             ' ',
             '%20',
-            Utils::url($image->url(), true)
+            $imagePath
           );
         }
       }
@@ -381,14 +387,14 @@ class SocialSEOMetaTagsPlugin extends Plugin
       }
 
       if(!isset($meta['og:image'])) {
-        $image = $this->getFirstImage() ?: $this->getDefaultImage();
+        $imagePath = $this->getFirstImage() ?: $this->getDefaultImage();
 
-        if(isset($image)) {
+        if(isset($imagePath)) {
           $meta['og:image']['property'] = 'og:image';
           $meta['og:image']['content']  = str_replace(
             ' ',
             '%20',
-            Utils::url($image->url(), true)
+            $imagePath
           );
         }
       }

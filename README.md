@@ -51,7 +51,7 @@ After enabling plugin and options, 2 solutions:
 
 You have possibility to customize meta-tag from your [page header metadata](https://learn.getgrav.org/content/headers#standard-metatag-examples):
 
-```md
+```yaml
 
 ---
 metadata:
@@ -66,7 +66,7 @@ Page content
 
 To define a global description for all meta-tags, configure your page header as follow:
 
-```md
+```yaml
 
 ---
 description: 'Global description'
@@ -90,12 +90,24 @@ Description is defined as follow:
 4. If description from frontmatter header metadata (for each meta-tag) is defined, use it.
 
 
+## Image configuration from page
+
+In page [headers / frontmatter](https://learn.getgrav.org/17/content/headers), you have possibility to define an absolute image path through field `header_image_file`.  
+This configuration is compatible with Antimatter theme (See issue #15).
+This configuration is choose first, then first media image and last default image from plugin configuration.
+
+
+```yaml
+header_image_file: 'Absolute image path'
+```
+
 # Configuration
 
 ## Common SEO
 
 For SEO, you have the following default configuration:
-```
+
+```yaml
 seo:
   robots: without
   length: 20
@@ -122,7 +134,8 @@ seo:
 
 
 For Twitter, you have the following default configuration:
-```
+
+```yaml
 social_pages:
   pages:
     twitter:
@@ -163,7 +176,8 @@ In your base template, add the following line in the `html` tag:
 ### Plugin configuration
 
 For Facebook, you have the following default configuration:
-```
+
+```yaml
 social_pages:
   pages:
     facebook:
@@ -192,7 +206,7 @@ This behavior is discussed [here](https://github.com/getgrav/grav/issues/1955).
 
 With the following configuration, the plugin allows the conversion of simple quote (`'`), which can be an issue for Twitter sharing, into html entity (`#039;`):
 
-```yml
+```yaml
 quote:
   convert_simple: true
 ```
@@ -203,7 +217,7 @@ The following defines a default image to use if no image is present in the curre
 
 This avoids having to set an image for each Page; useful with repetitive Pages like events or such.
 
-```yml
+```yaml
 default:
   image:
     user/assets/images/ZOqdm0x1rzP6iLp.png:

@@ -1,4 +1,11 @@
 
+# v2.2.0
+## 03/16/2021
+
+1. [](#new)
+    * Add support for `header_image_file` field from header page (issue #15).
+
+
 # v2.1.1
 ## 03/15/2021
 
