@@ -90,15 +90,14 @@ Description is defined as follow:
 4. If description from frontmatter header metadata (for each meta-tag) is defined, use it.
 
 
-## Image configuration from page
+## Antimatter theme
 
-In page [headers / frontmatter](https://learn.getgrav.org/17/content/headers), you have possibility to define an absolute image path through field `header_image_file`.  
-This configuration is compatible with Antimatter theme (See issue #15).
+This plugin support the field `header_image_file` of [Antimatter](https://github.com/getgrav/grav-theme-antimatter) theme.  
 This configuration is choose first, then first media image and last default image from plugin configuration.
 
 
 ```yaml
-header_image_file: 'Absolute image path'
+header_image_file: 'Relative image path'
 ```
 
 # Configuration

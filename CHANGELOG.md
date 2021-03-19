@@ -1,4 +1,11 @@
 
+# v2.2.1
+## 03/19/2021
+
+1. [](#bugfix)
+    * Change strategy for support of `header_image_file` from Antimatter theme (issue #20).
+
+
 # v2.2.0
 ## 03/16/2021
 
