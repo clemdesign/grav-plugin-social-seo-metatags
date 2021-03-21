@@ -246,15 +246,7 @@ class SocialSEOMetaTagsPlugin extends Plugin
 
     $image = null;
 
-    // Check if Antimatter theme header_image_file field is defined
-    if (isset($page->header()->header_image_file)) {
-      $antimatterFile = $page->header()->header_image_file;
-      if (is_file($antimatterFile)) {
-        $image = MediumFactory::fromFile($antimatterFile);
-      }
-    }
-
-    // Get first image from medias
+    // Get image from medias
     if ($image === null) {
       if (!empty($page->value('media.image'))) {
         // Get images for the current page.
@@ -270,6 +262,17 @@ class SocialSEOMetaTagsPlugin extends Plugin
             break;
           }
         }
+      }
+
+      // Check if Antimatter theme header_image_file field is defined
+      if (isset($page->header()->header_image_file)) {
+        $tmp_images = array_replace([], $images);
+        foreach ($tmp_images as $image) {
+          if (basename($image->url()) != $page->header()->header_image_file) {
+            unset($tmp_images[array_search($image, $tmp_images)]);
+          }
+        }
+        $images = isset($tmp_images) ? $tmp_images : null;
       }
 
       /* @var $images ImageMedium[] */
