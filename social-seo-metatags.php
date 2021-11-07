@@ -248,7 +248,7 @@ class SocialSEOMetaTagsPlugin extends Plugin
 
     // Check if Antimatter theme header_image_file field is defined
     if (isset($page->header()->header_image_file)) {
-      $antimatterFile = $page->header()->header_image_file;
+      $antimatterFile = $page->path() . '/' . $page->header()->header_image_file;
       if (is_file($antimatterFile)) {
         $image = MediumFactory::fromFile($antimatterFile);
       }
