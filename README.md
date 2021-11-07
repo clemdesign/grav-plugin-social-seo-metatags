@@ -210,6 +210,15 @@ quote:
   convert_simple: true
 ```
 
+### Images Cache
+
+This plugin can use cache to render images, instead to access directly to resource.
+
+```yaml
+image:
+  use_cache: true
+```
+
 ### Default image
 
 The following defines a default image to use if no image is present in the current Page.

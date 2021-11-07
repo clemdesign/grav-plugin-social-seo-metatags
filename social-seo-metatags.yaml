@@ -8,6 +8,8 @@ seo:
     enabled: false
 quote:
   convert_simple: true
+image:
+  use_cache: false
 social_pages:
   pages:
     twitter:
