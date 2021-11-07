@@ -6,6 +6,7 @@ seo:
     enabled: true
   page_content:
     enabled: false
+  breadcrumb: false
 quote:
   convert_simple: true
 image:

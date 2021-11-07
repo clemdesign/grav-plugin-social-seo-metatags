@@ -73,6 +73,17 @@ form:
                       0: PLUGINS.SOCIAL_SEO_METATAGS.NO
                     validate:
                       type: bool
+                  seo.breadcrumb:
+                    type: toggle
+                    label: PLUGINS.SOCIAL_SEO_METATAGS.GENERAL.BREADCRUMB.NAME
+                    help: PLUGINS.SOCIAL_SEO_METATAGS.GENERAL.BREADCRUMB.HELP
+                    highlight: 1
+                    default: 0
+                    options:
+                      1: PLUGINS.SOCIAL_SEO_METATAGS.YES
+                      0: PLUGINS.SOCIAL_SEO_METATAGS.NO
+                    validate:
+                      type: bool
                   seo.keywords.length:
                     type: text
                     size: x-small

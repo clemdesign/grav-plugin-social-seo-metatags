@@ -114,6 +114,7 @@ seo:
     enabled: true
   page_content:
     enabled: false
+  breadcrumb: false
 ```
 
 `robots` e.g. "Default Robots Meta-Tag" allow you to define default rules for bots. You have the following possibilities:
@@ -128,6 +129,8 @@ seo:
 `taxonomy.enabled` e.g. "Use Taxonomy Keywords" allow you to use Keywords of Taxonomy for Meta-Tags.
 
 `page_content.enabled` e.g. "Use Page Content Keywords" allow you to use Keywords of page content (`<strong>` and `<em>`) for Meta-Tags.
+
+`breadcrumb` e.g. "Use SEO Breadcrumb" allow you to integrate JSON-LD script SEO tag in your page.
 
 ## Associate Twitter account
 

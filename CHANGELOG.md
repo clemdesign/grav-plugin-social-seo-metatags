@@ -3,6 +3,7 @@
 1. [](#bugfix)
    * Issue #25: operation of header_image_file for antimatter theme
 2. [](#new)
+   * Issue #23: implement SE breadcrumb (beta)
    * Issue #24: implement option to use cache to render images
 
 # v2.2.1

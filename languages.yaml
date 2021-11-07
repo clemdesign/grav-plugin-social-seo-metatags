@@ -26,6 +26,9 @@ en:
           LENGTH:
             NAME: 'Number of keywords'
             HELP: 'Maximum number of keywords to display in meta-tag'
+        BREACRUMB:
+          NAME: 'Implement SEO Breadcrumb (beta)'
+          HELP: 'Integrate JSON-LD breacrumb script in your page'
         QUOTE:
           SIMPLE_RAW:
             NAME: 'Convert simple quote to html entity (using code #039;)'
@@ -90,6 +93,9 @@ fr:
           LENGTH:
             NAME: 'Nombre de mots-clés'
             HELP: 'Nombre de mots-clés maximal à afficher dans la meta-tag'
+        BREADCRUMB:
+          NAME: 'Intégrer le fil d''ariane SEO (beta)'
+          HELP: 'Intègre le script JSON-LD du fil d''ariane dans votre page'
         QUOTE:
           SIMPLE_RAW:
             NAME: 'Convertir les guillemets simples en entité HTML (utilisant code #039;)'
