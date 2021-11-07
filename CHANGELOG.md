@@ -1,3 +1,9 @@
+# v3.0.0
+## 11/07/2021
+1. [](#bugfix)
+   * Issue #25: operation of header_image_file for antimatter theme
+2. [](#new)
+   * Issue #24: implement option to use cache to render images
 
 # v2.2.1
 ## 03/19/2021

@@ -214,6 +214,8 @@ quote:
 
 This plugin can use cache to render images, instead to access directly to resource.
 
+With this option, you can hide the path to access to your resource in page source code.
+
 ```yaml
 image:
   use_cache: true
