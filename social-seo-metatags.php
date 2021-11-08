@@ -323,7 +323,9 @@ class SocialSEOMetaTagsPlugin extends Plugin
       $image = isset($images) ? array_shift($images) : null;
     }
 
-    return $this->getImage($image);
+    return isset($image) && $image instanceof ImageMedium
+        ? $this->getImage($image) 
+        : null;
   }
 
   /**
@@ -359,7 +361,9 @@ class SocialSEOMetaTagsPlugin extends Plugin
       $image = MediumFactory::fromFile($path);
     }
 
-    return $this->getImage($image);
+    return isset($image) && $image instanceof ImageMedium
+        ? $this->getImage($image)
+        : null;
   }
 
   private function getTwitterCardMetatags($meta)
