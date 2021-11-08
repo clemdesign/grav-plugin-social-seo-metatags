@@ -1,3 +1,8 @@
+# v3.0.1
+## 11/08/2021
+1. [](#bugfix)
+   * Issue #26: fix getImage bad argument type
+   
 # v3.0.0
 ## 11/07/2021
 1. [](#bugfix)

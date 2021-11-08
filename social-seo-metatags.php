@@ -329,15 +329,17 @@ class SocialSEOMetaTagsPlugin extends Plugin
   /**
    * Get the image path according context
    *
-   * @param ImageMedium $image
+   * @param ImageMedium|null $image
    * @return false|string|null
    */
-  private function getImage(ImageMedium $image) {
-    $url = $this->config->get('plugins.social-seo-metatags.image.use_cache') ? $image->cache()->url() : $image->url();
+  private function getImage(?ImageMedium $image)
+  {
+    if ($image !== null) {
+      $url = $this->config->get('plugins.social-seo-metatags.image.use_cache') ? $image->cache()->url() : $image->url();
+      return Utils::url($url, true);
+    }
 
-    return $image
-      ? Utils::url($url, true)
-      : null;
+    return null;
   }
 
   /**
