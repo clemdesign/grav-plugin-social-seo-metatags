@@ -353,6 +353,8 @@ class SocialSEOMetaTagsPlugin extends Plugin
       ->grav['config']
       ->get('plugins.social-seo-metatags.default.image');
 
+    $image = null;
+
     if (is_array($default)) {
       $path = array_key_first($default);
     }

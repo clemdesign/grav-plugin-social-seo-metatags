@@ -1,3 +1,8 @@
+# v3.0.2
+## 11/09/2021
+1. [](#bugfix)
+   * Issue #28: robustness for $image initialization in getDefaultImage()
+   
 # v3.0.1
 ## 11/08/2021
 1. [](#bugfix)
